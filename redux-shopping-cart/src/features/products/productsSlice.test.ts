@@ -5,9 +5,9 @@ describe('products reducer', () => {
 
     it('should return the initial state when passed an empty action', () => {
         const initialState = undefined;
-        const action = {type: ""};
+        const action = { type: "" };
         const result = productsReducer(initialState, action);
-        expect(result).toEqual({products: {}});
+        expect(result).toEqual({ products: {} });
     });
 
     it('should convert the products recieved to an object', () => {
@@ -29,8 +29,8 @@ describe('products reducer', () => {
         products.forEach(product => {
             expect(result2.products[product.id]).toEqual(product);
         });
-    });    
-    
+    });
+
     it("should allow different products to be recieved at different times", () => {
         const initialState = undefined;
         const action = receivedProducts(products);
@@ -40,7 +40,7 @@ describe('products reducer', () => {
         expect(Object.keys(result2.products).length).toEqual(products.length);
         products.forEach(product => {
             expect(result2.products[product.id]).toEqual(product);
-            }
+        }
         );
     });
 });
