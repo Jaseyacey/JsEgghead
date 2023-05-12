@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.81% </span>
+                <span class="strong">68.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/44</span>
+                <span class='fraction'>30/44</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/14</span>
+                <span class='fraction'>10/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.81% </span>
+                <span class="strong">68.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/44</span>
+                <span class='fraction'>30/44</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -195,10 +195,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -259,26 +259,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
@@ -303,11 +303,11 @@ const initialState: CartState = {
   errorMessage: "",
 };
 &nbsp;
-export const checkoutCart = createAsyncThunk("cart/checkout", <span class="fstat-no" title="function not covered" >as</span>ync (_, thunkAPI) =&gt; {
-  const state = <span class="cstat-no" title="statement not covered" >thunkAPI.getState() as RootState;</span>
-  const items = <span class="cstat-no" title="statement not covered" >state.cart.items;</span>
-  const response = <span class="cstat-no" title="statement not covered" >await checkout(items);</span>
-<span class="cstat-no" title="statement not covered" >  return response;</span>
+export const checkoutCart = createAsyncThunk("cart/checkout", async (_, thunkAPI) =&gt; {
+  const state = thunkAPI.getState() as RootState;
+  const items = state.cart.items;
+  const response = await checkout(items);
+  return response;
 });
 &nbsp;
 const cartSlice = createSlice({
@@ -368,26 +368,26 @@ export function <span class="fstat-no" title="function not covered" >getNumItems
 }
 &nbsp;
 export const getMemoizedNumItems = createSelector(
-<span class="fstat-no" title="function not covered" >  (s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.cart.items,</span>
-<span class="fstat-no" title="function not covered" >  (i</span>tems) =&gt; {
-<span class="cstat-no" title="statement not covered" >    console.log("calling getMemoizedNumItems");</span>
-    let numItems = <span class="cstat-no" title="statement not covered" >0;</span>
-<span class="cstat-no" title="statement not covered" >    for (let id in items) {</span>
-<span class="cstat-no" title="statement not covered" >      numItems += items[id];</span>
+  (state: RootState) =&gt; state.cart.items,
+  (items) =&gt; {
+    console.log("calling getMemoizedNumItems");
+    let numItems = 0;
+    for (let id in items) {
+      numItems += items[id];
     }
-<span class="cstat-no" title="statement not covered" >    return numItems;</span>
+    return numItems;
   }
 );
 &nbsp;
 export const getTotalPrice = createSelector(
-<span class="fstat-no" title="function not covered" >  (s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.cart.items,</span>
-<span class="fstat-no" title="function not covered" >  (s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.products.products,</span>
-<span class="fstat-no" title="function not covered" >  (i</span>tems, products) =&gt; {
-    let total = <span class="cstat-no" title="statement not covered" >0;</span>
-<span class="cstat-no" title="statement not covered" >    for (let id in items) {</span>
-<span class="cstat-no" title="statement not covered" >      total += products[id].price * items[id];</span>
+  (state: RootState) =&gt; state.cart.items,
+  (state: RootState) =&gt; state.products.products,
+  (items, products) =&gt; {
+    let total = 0;
+    for (let id in items) {
+      total += products[id].price * items[id];
     }
-<span class="cstat-no" title="statement not covered" >    return total.toFixed(2);</span>
+    return total.toFixed(2);
   }
 );
 &nbsp;</pre></td></tr></table></pre>
@@ -397,7 +397,7 @@ export const getTotalPrice = createSelector(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-12T08:17:30.961Z
+                at 2023-05-12T10:32:07.193Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
